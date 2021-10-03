@@ -12,8 +12,32 @@ namespace ICM.Controllers
     public class IMCControllers : ControllerBase
     {
 
-        [HttpGet]
 
+
+        /*Nombre de la escuela: Universidad Tecnologica Metropolitana
+
+        Asignatura: Aplicaciones Web Orientadas A Servicios
+
+
+        Nombre del Maestro: Chuc Uc Joel Ivan
+
+
+        Nombre de la actividad:"Calcular IMC"
+
+
+        Nombre del alumno: Fabian Francisco Aguilar Rivero
+
+
+        Cuatrimestre: 4
+
+
+        Grupo: B
+
+
+        Parcial: 1
+        */
+
+        [HttpGet]
         public IActionResult IMCResultado(double altura, double peso)
 
         {
@@ -24,11 +48,11 @@ namespace ICM.Controllers
 
             R.Altura = altura / 100;
 
-            var AFinal = R.Altura;
+            var AlturaFinal = R.Altura;
 
-            var IMC = peso / (AFinal * AFinal);
+            var IMC = peso / (AlturaFinal * AlturaFinal);
 
-            var Clasificacion = "";
+            var Decision = "";
 
 
 
@@ -36,7 +60,7 @@ namespace ICM.Controllers
 
             {
 
-                Clasificacion = "Tienes un peso inferior a lo normal";
+                Decision = "Tienes un peso inferior a lo normal";
 
             }
 
@@ -48,7 +72,7 @@ namespace ICM.Controllers
 
                 {
 
-                    Clasificacion = "Tienes un peso normal";
+                    Decision = "Tienes un peso normal";
 
                 }
 
@@ -60,7 +84,7 @@ namespace ICM.Controllers
 
                     {
 
-                        Clasificacion = "Tienes un peso superior al normal";
+                        Decision = "Tienes un peso superior al normal";
 
                     }
 
@@ -68,7 +92,7 @@ namespace ICM.Controllers
 
                     {
 
-                        Clasificacion = "Tienes obesidad";
+                        Decision = "Tienes obesidad";
 
                     }
 
@@ -76,9 +100,9 @@ namespace ICM.Controllers
 
             }
 
-            var Resultado = "Su IMC es: " + Convert.ToString(IMC) + "y su composicion corporal es:  " + Clasificacion;
+            var Peso = "Su IMC es: " + Convert.ToString(IMC) + "y su composicion corporal es de:  " + Decision;
 
-            return Ok(Resultado);
+            return Ok(Peso);
 
         }
 
